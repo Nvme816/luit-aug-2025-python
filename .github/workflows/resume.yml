@@ -1,0 +1,86 @@
+
+name: Resume Site CI/CD
+
+on:
+  pull_request:
+    branches: [ "**" ]
+  push:
+    branches: [ "main" ]
+
+env:
+  PROJECT_TAG: resume-site
+  TEMPLATE: infra/template.yml
+  STACK_NAME: resume-site-stack
+  REGION: us-east-1
+  BUCKET_NAME: testing-s3-bucket-access123   # <-- set this
+  BETA_KEY: beta/index.html
+  PROD_KEY: prod/index.html
+  MODEL_ID: ""  # set to a Bedrock model id when ready, leave empty to use local fallback
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # --- Option A: simple creds via GitHub Secrets (works now)
+      - name: Configure AWS (keys)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.REGION }}
+
+      # --- Option B: OIDC (recommended later). Uncomment when you switch to role:
+      # - name: Configure AWS (OIDC)
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     role-to-assume: arn:aws:iam::<ACCOUNT_ID>:role/resume-site-cicd-role
+      #     role-session-name: gh-actions
+      #     aws-region: ${{ env.REGION }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install boto3
+
+      - name: Deploy CloudFormation (ensure infra exists/updated)
+        run: |
+          aws cloudformation deploy \
+            --stack-name $STACK_NAME \
+            --template-file $TEMPLATE \
+            --parameter-overrides BucketName=$BUCKET_NAME ProjectTag=$PROJECT_TAG \
+            --capabilities CAPABILITY_NAMED_IAM
+
+      - name: Export stack outputs
+        id: cfn
+        run: |
+          DEPLOY_TABLE=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME \
+            --query "StackResources[?LogicalResourceId=='DeploymentTrackingTable'].PhysicalResourceId" --output text)
+          ANALYTICS_TABLE=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME \
+            --query "StackResources[?LogicalResourceId=='ResumeAnalyticsTable'].PhysicalResourceId" --output text)
+          echo "DEPLOY_TABLE=$DEPLOY_TABLE" >> $GITHUB_ENV
+          echo "ANALYTICS_TABLE=$ANALYTICS_TABLE" >> $GITHUB_ENV
+
+      - name: Run pipeline (beta on PR, prod on main)
+        env:
+          AWS_REGION: ${{ env.REGION }}
+          BUCKET_NAME: ${{ env.BUCKET_NAME }}
+          DEPLOY_TABLE: ${{ env.DEPLOY_TABLE }}
+          ANALYTICS_TABLE: ${{ env.ANALYTICS_TABLE }}
+          BETA_KEY: ${{ env.BETA_KEY }}
+          PROD_KEY: ${{ env.PROD_KEY }}
+          MODEL_ID: ${{ env.MODEL_ID }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python pipeline.py --env beta
+          else
+            python pipeline.py --env prod
+          fi
