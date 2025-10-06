@@ -140,7 +140,7 @@ Cloud Operations, Security, Site Reliability, Infrastructure, and Platform Engin
 
 ### Cloud Operations Specialist  
 **Community Choice Financial** — Remote, US  
-*June 2024 – Jan 2025*
+*Jun 2024 – Jan 2025*
 
 <ul>
   <li>Supported hybrid cloud and edge environments, maintaining uptime, secure access, and rapid incident response for users and POS environments supporting financial platforms.</li>
@@ -180,6 +180,30 @@ Cloud Operations, Security, Site Reliability, Infrastructure, and Platform Engin
   <li>Documented port mappings and collaborated with engineers and project managers to maintain accurate infrastructure records.</li>
 </ul>
 
+### Data Center Security Operations Supervisor  
+**Meta Data Center** — New Albany, OH  
+*Jun 2019 – Mar 2023*
+
+<ul>
+  <li>Directed access control and incident response for data center facilities, managing security teams, verification protocols, and compliance standards.</li>
+  <li>Strengthened facility security by developing identity verification protocols, performing access-point risk analyses, and recommending enhancements to protect high-value equipment.</li>
+  <li>Led incident response and staff scheduling to ensure continuous coverage and safe operations.</li>
+  <li>Coordinated with client security, law enforcement, and technical teams to prevent theft and respond to incidents.</li>
+  <li>Maintained compliance with security standards through enforced protocols, access audits, and coordinated incident reporting.</li>
+</ul>
+
+### Public Safety / Security Control Center Analyst  
+**Allied Universal** — New York, NY  
+*Jun 2007 – Mar 2016*
+
+<ul>
+  <li>Monitored critical transit infrastructure with surveillance and access control systems. Escalated threats and coordinated with law enforcement to strengthen incident response.</li>
+  <li>Secured post-9/11 critical infrastructure by operating advanced surveillance systems and escalating credible threats to federal and local agencies.</li>
+  <li>Monitored PSOC surveillance and access systems using night-vision and heat-signature cameras to protect restricted areas.</li>
+  <li>Coordinated real-time incident response by escalating threats to multi-agency law enforcement teams, ensuring rapid containment.</li>
+  <li>Conducted access audits and enforced surveillance protocols to prevent unauthorized entry.</li>
+  <li>Produced security reports for company and client, leveraging law enforcement intelligence to strengthen risk assessments and situational awareness.</li>
+</ul>
 ---
 
 ## CERTIFICATIONS
