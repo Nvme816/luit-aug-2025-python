@@ -6,3 +6,32 @@ Add-Content README.md "`n- Fixed page rendering by converting Markdown `-` bulle
 git add README.md
 git commit -m "Docs: add short summary of rendering fix & deploy flow"
 git push -u origin docs/readme-update
+
+flowchart LR
+  Dev[Developer edits<br/>resume.md] --> PR[Pull Request]
+  PR -->|CI: beta| GA[GitHub Actions]
+  GA --> CFN[CloudFormation<br/>(idempotent)]
+  GA --> PY[pipeline.py<br/>AI convert + ATS]
+  PY --> S3[S3 bucket<br/>beta/ and prod/]
+  PY --> DDB1[(DynamoDB<br/>ResumeAnalytics)]
+  PY --> DDB2[(DynamoDB<br/>DeploymentTracking)]
+
+sequenceDiagram
+  participant Dev as Developer
+  participant GH as GitHub Actions
+  participant CF as CloudFormation
+  participant S3 as S3 (beta/prod)
+  participant D1 as DDB: DeploymentTracking
+  participant D2 as DDB: ResumeAnalytics
+
+  Dev->>GH: Open PR
+  GH->>CF: Deploy/Update stack
+  GH->>GH: Run pipeline.py --env beta
+  GH->>S3: Put beta/index.html
+  GH->>D2: Put ATS analysis
+  GH->>D1: Put deployment record (beta)
+
+  Dev->>GH: Merge PR → main
+  GH->>GH: Run pipeline.py --env prod
+  GH->>S3: Copy beta/index.html → prod/index.html
+  GH->>D1: Write deployment record (prod)
