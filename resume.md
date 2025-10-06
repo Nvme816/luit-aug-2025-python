@@ -10,11 +10,9 @@
 
 ## SUMMARY
 
-<ul>
-  <li>Cloud Operations, Security, Site Reliability, Infrastructure, and Platform Engineering professional with experience spanning AWS, Azure, and hybrid cloud environments. My background bridges data center operations, security leadership, and cloud engineering, with a focus on resilience, compliance, and secure-by-design systems.</li>
-  <li>I’ve helped organizations protect multi-million-dollar operations by sustaining uptime, reduce incidents through automation and observability, strengthen IAM and Zero Trust controls, and enhance reliability across cloud and edge infrastructures.</li>
-  <li>Currently advancing expertise through a Cloud DevOps Engineering Apprenticeship and a Director-led DevOps mentorship program in leadership, Infrastructure-as-Code, and cloud automation.</li>
-</ul>
+<p style="white-space: normal; overflow-wrap: anywhere; word-break: normal; display:block; line-height:1.6; max-width:70ch; margin:0;">
+Cloud Operations, Security, Site Reliability, Infrastructure, and Platform Engineering professional with experience spanning AWS, Azure, and hybrid cloud environments. My background bridges data center operations, security leadership, and cloud engineering, with a focus on resilience, compliance, and secure-by-design systems. I’ve helped organizations protect multi-million-dollar operations by sustaining uptime, reduce incidents through automation and observability, strengthen IAM and Zero Trust controls, and enhance reliability across cloud and edge infrastructures. Currently advancing expertise through a Cloud DevOps Engineering Apprenticeship and a Director-led DevOps mentorship program in leadership, Infrastructure-as-Code, and cloud automation.
+</p>
 
 ---
 
