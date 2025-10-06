@@ -16,6 +16,10 @@ flowchart LR
   PY --> DDB1[(DynamoDB<br/>ResumeAnalytics)]
   PY --> DDB2[(DynamoDB<br/>DeploymentTracking)]
 
+
+```md
+### CI/CD Flow
+```mermaid
 sequenceDiagram
   participant Dev as Developer
   participant GH as GitHub Actions
@@ -35,3 +39,12 @@ sequenceDiagram
   GH->>GH: Run pipeline.py --env prod
   GH->>S3: Copy beta/index.html → prod/index.html
   GH->>D1: Write deployment record (prod)
+
+
+2) **Add a simple “Evidence” section with links** (no pics):
+```md
+### Evidence (links)
+- Beta: https://testing-s3-bucket-access123.s3.us-east-1.amazonaws.com/beta/index.html
+- Prod: https://testing-s3-bucket-access123.s3.us-east-1.amazonaws.com/prod/index.html
+- Actions: link to your latest PR run and Merge-to-main run
+- DynamoDB: tables `resume-site-DeploymentTracking` and `resume-site-ResumeAnalytics` contain items for the latest commit
