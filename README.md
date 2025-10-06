@@ -7,6 +7,9 @@ git add README.md
 git commit -m "Docs: add short summary of rendering fix & deploy flow"
 git push -u origin docs/readme-update
 
+
+## Architecture
+```mermaid
 flowchart LR
   Dev[Developer edits<br/>resume.md] --> PR[Pull Request]
   PR -->|CI: beta| GA[GitHub Actions]
@@ -15,7 +18,10 @@ flowchart LR
   PY --> S3[S3 bucket<br/>beta/ and prod/]
   PY --> DDB1[(DynamoDB<br/>ResumeAnalytics)]
   PY --> DDB2[(DynamoDB<br/>DeploymentTracking)]
+```
 
+## CI/CD Flow
+```mermaid
 sequenceDiagram
   participant Dev as Developer
   participant GH as GitHub Actions
@@ -35,3 +41,4 @@ sequenceDiagram
   GH->>GH: Run pipeline.py --env prod
   GH->>S3: Copy beta/index.html → prod/index.html
   GH->>D1: Write deployment record (prod)
+```
