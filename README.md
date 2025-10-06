@@ -7,16 +7,6 @@ git add README.md
 git commit -m "Docs: add short summary of rendering fix & deploy flow"
 git push -u origin docs/readme-update
 
-```mermaid
-flowchart LR
-  Dev[Developer edits resume.md] --> PR[Pull Request]
-  PR --> GA[GitHub Actions]
-  GA --> CFN[CloudFormation (idempotent)]
-  GA --> PY[pipeline.py (AI convert + ATS)]
-  PY --> S3[S3 bucket: beta & prod]
-  PY --> DDB1[(DynamoDB: ResumeAnalytics)]
-  PY --> DDB2[(DynamoDB: DeploymentTracking)]
-```
 
 ## CI/CD Flow
 ```mermaid
