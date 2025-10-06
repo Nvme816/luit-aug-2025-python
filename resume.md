@@ -204,6 +204,7 @@ Cloud Operations, Security, Site Reliability, Infrastructure, and Platform Engin
   <li>Conducted access audits and enforced surveillance protocols to prevent unauthorized entry.</li>
   <li>Produced security reports for company and client, leveraging law enforcement intelligence to strengthen risk assessments and situational awareness.</li>
 </ul>
+
 ---
 
 ## CERTIFICATIONS
