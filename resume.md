@@ -197,12 +197,10 @@ Cloud Operations, Security, Site Reliability, Infrastructure, and Platform Engin
 *Jun 2007 – Mar 2016*
 
 <ul>
-  <li>Monitored critical transit infrastructure with surveillance and access control systems. Escalated threats and coordinated with law enforcement to strengthen incident response.</li>
-  <li>Secured post-9/11 critical infrastructure by operating advanced surveillance systems and escalating credible threats to federal and local agencies.</li>
-  <li>Monitored PSOC surveillance and access systems using night-vision and heat-signature cameras to protect restricted areas.</li>
-  <li>Coordinated real-time incident response by escalating threats to multi-agency law enforcement teams, ensuring rapid containment.</li>
-  <li>Conducted access audits and enforced surveillance protocols to prevent unauthorized entry.</li>
-  <li>Produced security reports for company and client, leveraging law enforcement intelligence to strengthen risk assessments and situational awareness.</li>
+  <li>Secured post-9/11 maritime transit infrastructure by monitoring PSOC surveillance and access control systems, including night-vision and heat-signature feeds, to protect restricted zones.</li>
+  <li>Coordinated real-time incident response with federal and local law enforcement, escalating credible threats and supporting rapid containment and recovery operations.</li>
+  <li>Conducted access audits, enforced surveillance protocols to prevent unauthorized entry into restricted areas. </li>
+  <li>Utilized intelligence and threat reports from law enforcement and partner agencies to enhance situational awareness and strengthen security posture across critical assets.</li>
 </ul>
 
 ---
